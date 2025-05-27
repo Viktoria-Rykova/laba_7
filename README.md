@@ -48,9 +48,13 @@ clang -S -emit-llvm main.c -o main.ll
 clang -O0 -S -emit-llvm main.c -o main_O0.ll
 ```
 Стоит отметить, что в файле с IR до оптимизации:
+
 Все переменные (a, b, x.addr) размещены в памяти через alloca;
+
 Множество операций load и store;
+
 square вызывается как отдельная функция.
+
 ![image](https://github.com/user-attachments/assets/873957d1-4804-419e-b4d9-f52c4ef606ab)
 ```bash
 clang -O2 -S -emit-llvm main.c -o main_O2.ll
@@ -78,6 +82,7 @@ x = 2^n);
 diff main_O0.ll main_O2.ll
 ```
 Сравнение двух файлов:
+
 ![image](https://github.com/user-attachments/assets/034da53c-6285-4ebf-90cc-ca45134ae94f)
 Стоит отметить, что после оптимизации произошли следующие
 изменения:
